@@ -1,0 +1,130 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Interativa</title>
+    <style>
+        /* Estilo geral da página */
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #ffffff; /* Fundo branco */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Imagem de fundo */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://i.pinimg.com/236x/42/a9/4c/42a94c7a273b50f6fe24b3e9b961fd6c.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background: rgba(255, 255, 255, 0.5); /* Transparência aplicada ao fundo */
+            z-index: 1;
+        }
+
+        /* Container para as imagens agrupadas */
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px; /* Ajustado para dispositivos móveis */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Permite que as imagens se movam para a linha seguinte se necessário */
+            z-index: 2; /* As imagens ficam acima do fundo transparente */
+        }
+
+        /* Estilos das imagens com tamanhos variados */
+        .img-grupo {
+            position: absolute;
+            transition: transform 0.3s ease;
+            opacity: 1; /* Opacidade total */
+        }
+        
+        /* Reposicionamento das imagens para evitar sobreposições */
+        .img1 { width: 120px; top: 5%; left: 5%; }
+        .img2 { width: 160px; top: 5%; right: 5%; }
+        .img3 { width: 120px; bottom: 5%; left: 20%; }
+        .img4 { width: 140px; bottom: 5%; right: 20%; }
+        .img5 { width: 160px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .img6 { width: 140px; top: 50%; left: 30%; transform: translate(-50%, -50%); }
+
+        /* Estilo da imagem central com destaque e efeito de confetes */
+        .img-central {
+            width: 200px;
+            z-index: 3; /* Mantém a imagem central em destaque acima das outras */
+            position: relative;
+            animation: confetes 2s infinite;
+        }
+
+        /* Estilo do texto sobre a imagem central */
+        .texto-central {
+            position: absolute;
+            top: 20%; /* Ajustado para maior centralização */
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff; /* Cor do texto em branco */
+            font-size: 24px; /* Ajuste do tamanho da fonte para telas menores */
+            font-weight: bold;
+            text-align: center;
+            width: 90%;
+            padding: 10px;
+            border: none; /* Remove a borda da caixa de texto */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra do texto */
+            -webkit-text-stroke: 0.5px #000; /* Borda branca fina ao redor do texto */
+            font-family: Verdana, sans-serif; /* Aplicar a fonte Verdana */
+            z-index: 4;
+            opacity: 0;
+            animation: cair 2s forwards;
+        }
+
+        /* Animação de confetes */
+        @keyframes confetes {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(20deg) scale(1.2); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        /* Animação de texto caindo do topo */
+        @keyframes cair {
+            0% { top: -50px; opacity: 0; }
+            100% { top: 20%; opacity: 1; }
+        }
+
+        /* Media Queries para ajustes em dispositivos móveis */
+        @media (max-width: 768px) {
+            .img-central {
+                width: 150px;
+            }
+
+            .texto-central {
+                font-size: 18px; /* Reduz o tamanho da fonte para telas menores */
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container com as imagens agrupadas -->
+    <div class="container">
+        <img class="img-grupo img1" src="https://i.pinimg.com/236x/55/bd/2c/55bd2cc391668c2299a41728538a05fd.jpg" alt="Imagem 1">
+        <img class="img-grupo img2" src="https://i.pinimg.com/736x/b1/0d/e8/b10de8d618ccc1cd9ec8c1e803e256d2.jpg" alt="Imagem 2">
+        <img class="img-grupo img3" src="https://i.pinimg.com/236x/57/f4/37/57f4371d8a140a62c9757268214ba87c.jpg" alt="Imagem 3">
+        <img class="img-grupo img4" src="https://i.pinimg.com/736x/81/5c/1c/815c1ce8415cf2aee2f44fc4771196ba.jpg" alt="Imagem 4">
+        <img class="img-central" src="https://i.pinimg.com/236x/ee/37/62/ee3762c2cbea028f177834989c8060dc.jpg" alt="Imagem Central">
+        <div class="texto-central">
+            samu el foi oficialmente perdoado pelo crime <br> de ser o cara mais bonito que theo <br> dore <br> já viu na vida
+        </div>
+    </div>
+</body>
+</html>
